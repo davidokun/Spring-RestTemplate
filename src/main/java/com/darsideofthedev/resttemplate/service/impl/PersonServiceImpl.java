@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -26,7 +27,9 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person getPersonById(int id) {
-        return personList.get(id);
+    public Optional<Person> getPersonById(int id) {
+        return personList.stream()
+                .filter(p -> p.getId() == id)
+                .findFirst();
     }
 }

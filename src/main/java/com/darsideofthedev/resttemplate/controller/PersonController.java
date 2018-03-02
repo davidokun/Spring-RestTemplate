@@ -32,6 +32,6 @@ public class PersonController {
     @GetMapping(value = "persons/{id}", produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<Person> getPersonById(@PathVariable int id) {
 
-        return ResponseEntity.ok(personService.getPersonById(id));
+        return ResponseEntity.ok(personService.getPersonById(id).orElse(new Person()));
     }
 }
