@@ -3,6 +3,7 @@ package com.darsideofthedev.resttemplate.client;
 
 import com.darsideofthedev.resttemplate.model.Person;
 import org.junit.Test;
+import org.springframework.http.HttpEntity;
 import org.springframework.web.client.RestTemplate;
 
 import static junit.framework.TestCase.assertEquals;
@@ -29,5 +30,17 @@ public class RestTemplateClientTest {
         Person person = restTemplate.getForObject(BASE_URL + "/1", Person.class);
         assertNotNull(person);
         assertEquals("Jon", person.getFirstName());
+    }
+
+    @Test
+    public void createPeron(){
+        Person newPerson = new Person(3, "Clark", "Kent", 33);
+        HttpEntity<Person> requestBody = new HttpEntity<>(newPerson);
+
+        Person person = restTemplate.postForObject(BASE_URL, requestBody, Person.class);
+
+        assertNotNull(person);
+        assertEquals("Kent", person.getLastName());
+        assertEquals(33, person.getAge());
     }
 }

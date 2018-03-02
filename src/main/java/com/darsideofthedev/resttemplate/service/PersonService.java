@@ -10,4 +10,6 @@ public interface PersonService {
     List<Person> getPersons();
 
     Optional<Person> getPersonById(int id);
+
+    Person createPerson(Person person);
 }

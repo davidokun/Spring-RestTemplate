@@ -32,4 +32,10 @@ public class PersonServiceImpl implements PersonService {
                 .filter(p -> p.getId() == id)
                 .findFirst();
     }
+
+    @Override
+    public Person createPerson(Person person) {
+        personList.add(person);
+        return getPersonById(person.getId()).orElse(new Person());
+    }
 }
