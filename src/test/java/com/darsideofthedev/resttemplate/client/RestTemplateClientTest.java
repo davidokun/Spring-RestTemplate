@@ -1,10 +1,15 @@
 package com.darsideofthedev.resttemplate.client;
 
 
+import com.darsideofthedev.resttemplate.model.Hobbies;
+import com.darsideofthedev.resttemplate.model.Hobby;
 import com.darsideofthedev.resttemplate.model.Person;
 import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
@@ -34,7 +39,15 @@ public class RestTemplateClientTest {
 
     @Test
     public void createPeron(){
-        Person newPerson = new Person(3, "Clark", "Kent", 33);
+        Hobbies hobbies = new Hobbies();
+
+        List<Hobby> hobbys = new ArrayList<>();
+        hobbys.add(new Hobby("Movies"));
+        hobbys.add(new Hobby("Sports"));
+
+        hobbies.setHobbies(hobbys);
+
+        Person newPerson = new Person(3, "Clark", "Kent", 33, hobbies);
         HttpEntity<Person> requestBody = new HttpEntity<>(newPerson);
 
         Person person = restTemplate.postForObject(BASE_URL, requestBody, Person.class);

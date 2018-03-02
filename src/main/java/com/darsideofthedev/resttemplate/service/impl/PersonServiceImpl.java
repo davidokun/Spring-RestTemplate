@@ -1,5 +1,7 @@
 package com.darsideofthedev.resttemplate.service.impl;
 
+import com.darsideofthedev.resttemplate.model.Hobbies;
+import com.darsideofthedev.resttemplate.model.Hobby;
 import com.darsideofthedev.resttemplate.model.Person;
 import com.darsideofthedev.resttemplate.service.PersonService;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,16 @@ public class PersonServiceImpl implements PersonService {
 
     @PostConstruct
     public void setUp() {
-        personList.add(new Person(1, "Jon", "Doe", 23));
-        personList.add(new Person(2, "Jane", "Doe", 26));
+        Hobbies hobbies = new Hobbies();
+
+        List<Hobby> hobbys = new ArrayList<>();
+        hobbys.add(new Hobby("Movies"));
+        hobbys.add(new Hobby("Sports"));
+
+        hobbies.setHobbies(hobbys);
+
+        personList.add(new Person(1, "Jon", "Doe", 23, hobbies));
+        personList.add(new Person(2, "Jane", "Doe", 26, hobbies));
     }
 
 
