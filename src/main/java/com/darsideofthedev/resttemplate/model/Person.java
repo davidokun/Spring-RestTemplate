@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Person implements Serializable {
 
+    private int id;
     private String firstName;
     private String lastName;
     private int age;
@@ -11,10 +12,19 @@ public class Person implements Serializable {
     public Person() {
     }
 
-    public Person(String firstName, String lastName, int age) {
+    public Person(int id, String firstName, String lastName, int age) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

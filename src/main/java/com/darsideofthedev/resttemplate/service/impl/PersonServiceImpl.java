@@ -15,13 +15,18 @@ public class PersonServiceImpl implements PersonService {
 
     @PostConstruct
     public void setUp() {
-        personList.add(new Person("Jon", "Doe", 23));
-        personList.add(new Person("Jane", "Doe", 26));
+        personList.add(new Person(1, "Jon", "Doe", 23));
+        personList.add(new Person(2, "Jane", "Doe", 26));
     }
 
 
     @Override
     public List<Person> getPersons() {
         return personList;
+    }
+
+    @Override
+    public Person getPersonById(int id) {
+        return personList.get(id);
     }
 }
